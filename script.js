@@ -16,15 +16,15 @@ function reset () {
 }
 
 function scoreUpdate (){
+    if (startScore>0){
     startScore--;
     score.textContent=startScore;
+    }
+    else if (startScore<=0){
+        message.textContent='Game over!' 
+    }
 }
 
-function gameOverCheck (){
-    if (startScore<=0){
-        message.textContent='Game over!'
-       }
-}
 
 
 console.log(document)
@@ -38,13 +38,11 @@ document.querySelector('.check').addEventListener('click', function(){
     else if (guess>randomNum){
        message.textContent='Too high!' 
        scoreUpdate();
-       gameOverCheck();
        reset();
     }
     else if (guess<randomNum){
         message.textContent='Too low!'
         scoreUpdate();
-        gameOverCheck();
         reset();
     }
     else if(guess===randomNum){
